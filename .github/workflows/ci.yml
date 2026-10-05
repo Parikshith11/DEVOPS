@@ -1,0 +1,15 @@
+name: Continuous Integration
+
+on:
+  push:
+   branches: [ main ] 
+
+jobs:
+ check-file:
+          runs-on: windows-latest
+          steps:
+             -name: Checkout Repository 
+              uses: actions/checkout@v4
+             - name: Checkout student datafile
+             shell: cmd
+             run if exist studentdata.txt (echo file exists) else (exit /b 1)
